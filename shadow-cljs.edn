@@ -1,8 +1,12 @@
 
 {:source-paths ["src"]
- :dependencies []
-  :builds {:app {:target :browser
-                 :output-dir "target/"
-                 :assets-path "."
-                 :modules {:main {:entries [plain-app.main]}}
-                 :devtools {:after-load plain-app.main/reload!}}}}
+ :dependencies [[respo "0.5.2"]
+                [mvc-works/hsl "0.1.2"]]
+ :builds {:app {:target :browser
+                :output-dir "target/"
+                :asset-path "."
+                :modules {:main {:entries [plain-app.example.main]}}
+                :devtools {:after-load plain-app.example.main/reload!}}
+          :render {:target :node-script
+                   :output-to "target/render.js"
+                   :main plain-app.example.render/main!}}}
