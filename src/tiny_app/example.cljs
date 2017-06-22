@@ -2,8 +2,7 @@
 (ns tiny-app.example
   (:require-macros [tiny-app.core :refer [create-tiny-app->]]
                    [respo.macros :refer [defcomp <> div button span]])
-  (:require [tiny-app.example.comp.container :refer [comp-container]]
-            [respo.cursor :refer [mutate]]
+  (:require [respo.cursor :refer [mutate]]
             [respo.comp.space :refer [=<]]
             [respo.comp.inspect :refer [comp-inspect]]
             [respo.core :refer [create-comp]]))
