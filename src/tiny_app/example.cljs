@@ -27,9 +27,9 @@
     (<> span (:count store) nil)))
 
 (create-tiny-app-> {:model store
-                     :updater updater
-                     :view comp-container
-                     :mount-target (.querySelector js/document ".app")
-                     :show-ops? true})
+                    :updater updater
+                    :view comp-container
+                    :mount-target (.querySelector js/document ".app")
+                    :show-ops? true})
 
 (set! (.-onload js/window) run-app!)
