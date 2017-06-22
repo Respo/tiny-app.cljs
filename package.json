@@ -1,5 +1,5 @@
 {
-  "name": "plain-app",
+  "name": "tiny-app",
   "version": "0.1.0",
   "main": "index.js",
   "license": "MIT",
@@ -10,6 +10,7 @@
     "watch": "shadow-cljs watch app",
     "server": "shadow-cljs server",
     "compile": "shadow-cljs compile app",
-    "compile-render": "shadow-cljs compile render"
+    "html": "cp assets/index.html target/",
+    "serve": "http-server target/"
   }
 }

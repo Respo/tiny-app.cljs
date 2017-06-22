@@ -5,8 +5,5 @@
  :builds {:app {:target :browser
                 :output-dir "target/"
                 :asset-path "."
-                :modules {:main {:entries [plain-app.example.main]}}
-                :devtools {:after-load plain-app.example.main/reload!}}
-          :render {:target :node-script
-                   :output-to "target/render.js"
-                   :main plain-app.example.render/main!}}}
+                :modules {:main {:entries [tiny-app.example]}}
+                :devtools {:after-load tiny-app.example/reload!}}}}
