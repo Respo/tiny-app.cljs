@@ -38,6 +38,14 @@ However the namespace part can be long, since macros does handle dependencies in
             [respo.core :refer [create-comp]]))
 ```
 
+### Develop
+
+```bash
+yarn
+yarn try
+# open localhost:8080
+```
+
 ### License
 
 MIT

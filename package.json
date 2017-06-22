@@ -10,7 +10,8 @@
     "watch": "shadow-cljs watch app",
     "server": "shadow-cljs server",
     "compile": "shadow-cljs compile app",
-    "html": "cp assets/index.html target/",
-    "serve": "http-server target/"
+    "html": "mkdir -p target/ && cp assets/index.html target/",
+    "serve": "http-server target/",
+    "try": "yarn html && yarn compile && yarn serve"
   }
 }

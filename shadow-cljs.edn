@@ -1,6 +1,7 @@
 
 {:source-paths ["src"]
- :dependencies [[respo "0.5.2"]]
+ :dependencies [[respo "0.5.2"]
+                [mvc-works/hsl "0.1.2"]]
  :builds {:app {:target :browser
                 :output-dir "target/"
                 :asset-path "."
