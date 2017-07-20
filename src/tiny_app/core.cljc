@@ -1,10 +1,10 @@
 
 (ns tiny-app.core
-  (:require [respo.core :refer [render! clear-cache! falsify-stage! render-element]]
+  (:require [respo.core :refer [render! clear-cache! realize-ssr! render-element]]
             [respo.cursor :refer [mutate]]))
 
-#?(:cljs (def server-rendered? (some? (js/document.querySelector "meta#server-rendered")))
-   :clj (def server-rendered? false))
+#?(:cljs (def ssr? (some? (js/document.querySelector "meta.respo-ssr")))
+   :clj (def ssr? false))
 
 (defmacro create-tiny-app-> [configs]
   (let [store (:model configs)
@@ -22,19 +22,19 @@
                                  (~updater ~'@*store ~'op ~'op-data))]
           (reset! ~'*store ~'next-store)))
 
-      (~'defn ~'render-app! []
-        (render! ~mount-target (~comp-container ~'@*store) ~'dispatch!))
+      (~'defn ~'render-app! [~'renderer]
+        (~'renderer ~mount-target (~comp-container ~'@*store) ~'dispatch!))
 
       (~'defn ~'run-app! []
-        (if ~server-rendered?
-          (falsify-stage! ~mount-target
-                          (render-element (~comp-container ~'@*store))
-                          ~'dispatch!))
-        (~'render-app!)
-        (~'add-watch ~'*store :changes ~'render-app!)
+        (if ~ssr?
+          (~'render-app! realize-ssr!))
+        (~'render-app! render!)
+        (~'add-watch ~'*store :changes
+          (~'fn []
+            (~'render-app! render!)))
         (println "App started."))
 
       (~'defn ~'reload! []
         (clear-cache!)
-        (~'render-app!)
+        (~'render-app! render!)
         (println "Code updated.")))))
