@@ -26,10 +26,13 @@
     (=< 8 nil)
     (<> span (:count store) nil)))
 
-(create-tiny-app-> {:model store
-                    :updater updater
-                    :view comp-container
-                    :mount-target (.querySelector js/document ".app")
-                    :show-ops? true})
+(def app
+  (create-tiny-app-> {:model store
+                      :updater updater
+                      :view comp-container
+                      :mount-target (.querySelector js/document ".app")
+                      :show-ops? true}))
 
-(set! (.-onload js/window) run-app!)
+(set! (.-onload js/window) (:start-app! app))
+
+(def reload! (:reload! app))

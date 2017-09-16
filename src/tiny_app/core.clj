@@ -1,8 +1,6 @@
 
 (ns tiny-app.core)
 
-(declare ssr?)
-
 (defmacro create-tiny-app-> [configs]
   (let [store (:model configs)
         updater (:updater configs)
@@ -22,8 +20,8 @@
       (defn render-app!# [~'renderer]
         (~'renderer ~mount-target (~comp-container @*store#) dispatch!#))
 
-      (defn ~'run-app! []
-        (if ~ssr?
+      (defn start-app!# []
+        (if ~(:ssr? configs)
           (render-app!# respo.core/realize-ssr!))
         (render-app!# respo.core/render!)
         (~'add-watch *store# :changes
@@ -31,7 +29,10 @@
             (render-app!# respo.core/render!)))
         (println "App started."))
 
-      (defn ~'reload! []
+      (defn reload!# []
         (respo.core/clear-cache!)
         (render-app!# respo.core/render!)
-        (println "Code updated.")))))
+        (println "Code updated."))
+
+      {:start-app! start-app!#,
+       :reload! reload!#})))

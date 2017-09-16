@@ -8,7 +8,7 @@ Tiny App for [Repso](https://github.com/Respo/respo)
 [![Clojars Project](https://img.shields.io/clojars/v/respo/tiny-app.svg)](https://clojars.org/respo/tiny-app)
 
 ```edn
-[respo/tiny-app "0.1.1"]
+[respo/tiny-app "0.2.0-alpha"]
 ```
 
 ### Example
@@ -23,13 +23,17 @@ Tiny App for [Repso](https://github.com/Respo/respo)
 (defcomp comp-container [store]
   ; ...
 )
-(create-tiny-app-> {:model store
-                    :updater updater
-                    :view comp-container
-                    :mount-target (.querySelector js/document ".app")
-                    :show-ops? true})
+(def app
+  (create-tiny-app-> {:model store
+                      :ssr? (some? (js/document.querySelector "meta.respo-ssr"))
+                      :updater updater
+                      :view comp-container
+                      :mount-target (.querySelector js/document ".app")
+                      :show-ops? true})
 
-(set! (.-onload js/window) run-app!)
+(set! (.-onload js/window) (:start-app! app))
+
+(def reload! (:reload! app))
 ```
 
 However the namespace part can be long, since macros does handle dependencies in ClojureScript.
