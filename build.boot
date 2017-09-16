@@ -1,7 +1,7 @@
 
 (set-env!
   :resource-paths #{"src"}
-  :dependencies '[[respo "0.5.14"]])
+  :dependencies '[])
 
 (def +version+ "0.1.1")
 
