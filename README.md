@@ -50,8 +50,7 @@ Require code from namespaces:
 
 ```clojure
 (ns tiny-app.example
-  (:require [respo.cursor :refer [mutate]]
-            [respo.macros :refer [defcomp]]
+  (:require [respo.macros :refer [defcomp <> div button span]]
             [tiny-app.core :refer [create-tiny-app->]]))
 ```
 
