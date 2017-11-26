@@ -1,9 +1,11 @@
 
 {:source-paths ["src"]
- :dependencies [[respo "0.6.6"]
+ :dependencies [[respo "0.7.1"]
                 [mvc-works/hsl "0.1.2"]]
  :builds {:app {:target :browser
                 :output-dir "target/"
                 :asset-path "."
                 :modules {:main {:entries [tiny-app.example]}}
-                :devtools {:after-load tiny-app.example/reload!}}}}
+                :devtools {:after-load tiny-app.example/reload!
+                           :http-root "target"
+                           :http-port 8080}}}}

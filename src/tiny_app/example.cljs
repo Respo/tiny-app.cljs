@@ -10,7 +10,7 @@
 
 (defn updater [store op op-data]
   (case op
-    :inc (update store :count inc)
+    :inc (update store :count #(+ % 1))
     store))
 
 (defn on-click [e dispatch!]
