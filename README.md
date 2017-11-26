@@ -8,7 +8,7 @@ Tiny App for [Repso](https://github.com/Respo/respo)
 [![Clojars Project](https://img.shields.io/clojars/v/respo/tiny-app.svg)](https://clojars.org/respo/tiny-app)
 
 ```edn
-[respo/tiny-app "0.2.0-alpha"]
+[respo/tiny-app "0.2.1"]
 ```
 
 ### Example
