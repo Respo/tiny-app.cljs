@@ -26,11 +26,11 @@ Tiny App for [Repso](https://github.com/Respo/respo)
 )
 (def app
   (create-app-> {:model store
-                      :updater updater
-                      :view comp-container
-                      :mount-target (.querySelector js/document ".app")
-                      :ssr? (some? (js/document.querySelector "meta.respo-ssr"))
-                      :show-ops? true})
+                 :updater updater
+                 :view comp-container
+                 :mount-target (.querySelector js/document ".app")
+                 :ssr? (some? (js/document.querySelector "meta.respo-ssr"))
+                 :show-ops? true})
 
 (set! (.-onload js/window) (:start-app! app))
 
