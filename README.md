@@ -25,7 +25,7 @@ Tiny App for [Repso](https://github.com/Respo/respo)
   ; returns virtual DOM like: (div {})
 )
 (def app
-  (create-tiny-app-> {:model store
+  (create-app-> {:model store
                       :updater updater
                       :view comp-container
                       :mount-target (.querySelector js/document ".app")
@@ -51,7 +51,7 @@ Require code from namespaces:
 ```clojure
 (ns tiny-app.example
   (:require [respo.macros :refer [defcomp <> div button span]]
-            [tiny-app.core :refer [create-tiny-app->]]))
+            [tiny-app.core :refer [create-app->]]))
 ```
 
 ### Develop

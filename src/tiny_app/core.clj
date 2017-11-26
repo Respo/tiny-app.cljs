@@ -1,7 +1,7 @@
 
 (ns tiny-app.core)
 
-(defmacro create-tiny-app-> [configs]
+(defmacro create-app-> [configs]
   (let [store (:model configs)
         updater (:updater configs)
         comp-container (:view configs)

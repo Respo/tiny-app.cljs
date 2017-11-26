@@ -3,7 +3,7 @@
   (:require [respo.comp.space :refer [=<]]
             [respo.comp.inspect :refer [comp-inspect]]
             [respo.macros :refer [defcomp <> div button span]]
-            [tiny-app.core :refer [create-tiny-app->]]))
+            [tiny-app.core :refer [create-app->]]))
 
 (def store {:states {}
             :count 0})
@@ -25,7 +25,7 @@
     (<> span (:count store) nil)))
 
 (def app
-  (create-tiny-app-> {:model store
+  (create-app-> {:model store
                       :updater updater
                       :view comp-container
                       :mount-target (.querySelector js/document ".app")
