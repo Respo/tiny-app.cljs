@@ -29,7 +29,6 @@ Tiny App for [Repso](https://github.com/Respo/respo)
                  :updater updater
                  :view comp-container
                  :mount-target (.querySelector js/document ".app")
-                 :ssr? (some? (js/document.querySelector "meta.respo-ssr"))
                  :show-ops? true})
 
 (set! (.-onload js/window) (:start-app! app))
@@ -43,7 +42,6 @@ More explanations for options:
 * `updater`: pure function
 * `view`: pure function
 * `mount-target`: DOM node for mounting app
-* `ssr?`: if you have server rendered HTML, set it `true`, app will patch instead of mounting
 * `show-ops?`: if `true`, calling `dispatch!` prints logs
 
 Require code from namespaces:

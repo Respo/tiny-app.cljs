@@ -6,9 +6,12 @@
         updater (:updater configs)
         comp-container (:view configs)
         mount-target (:mount-target configs)
-        show-ops? (:show-ops? configs)
-        ssr? (:ssr? configs)]
+        show-ops? (:show-ops? configs)]
     `(do
+      (assert (map? ~store) "store should be a map")
+      (assert (fn? ~updater) "updater should be a function")
+      (assert (fn? ~comp-container) "view should be a function of component")
+      (assert (instance? js/Element ~mount-target) "mount-target should be an element")
       (defonce *store# (atom ~store))
 
       (defn dispatch!# [~'op ~'op-data]
@@ -22,9 +25,8 @@
         (~'renderer ~mount-target (~comp-container @*store#) dispatch!#))
 
       (defn start-app!# []
-        (if ~ssr? (render-app!# respo.core/realize-ssr!))
         (render-app!# respo.core/render!)
-        (~'add-watch *store# :changes
+        (add-watch *store# :changes
           (fn []
             (render-app!# respo.core/render!)))
         (println "App started."))
