@@ -8,7 +8,7 @@ Tiny App for [Repso](https://github.com/Respo/respo)
 [![Clojars Project](https://img.shields.io/clojars/v/respo/tiny-app.svg)](https://clojars.org/respo/tiny-app)
 
 ```edn
-[respo/tiny-app "0.2.3"]
+[respo/tiny-app "0.3.0"]
 ```
 
 ### Example
@@ -31,8 +31,7 @@ Tiny App for [Repso](https://github.com/Respo/respo)
                  :mount-target (.querySelector js/document ".app")
                  :show-ops? true})
 
-(set! (.-onload js/window) (:start-app! app))
-
+(def main! (:init! app))
 (def reload! (:reload! app))
 ```
 
@@ -48,7 +47,7 @@ Require code from namespaces:
 
 ```clojure
 (ns tiny-app.example
-  (:require [respo.macros :refer [defcomp <> div button span]]
+  (:require [respo.core :refer [defcomp <> div button span]]
             [tiny-app.core :refer [create-app->]]))
 ```
 

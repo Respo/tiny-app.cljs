@@ -2,7 +2,7 @@
 (ns tiny-app.example
   (:require [respo.comp.space :refer [=<]]
             [respo.comp.inspect :refer [comp-inspect]]
-            [respo.macros :refer [defcomp <> div button span]]
+            [respo.core :refer [defcomp <> div button span]]
             [tiny-app.core :refer [create-app->]]))
 
 (def store {:states {}
@@ -31,6 +31,5 @@
                  :mount-target (.querySelector js/document ".app")
                  :show-ops? true}))
 
-(set! (.-onload js/window) (:start-app! app))
-
+(def main! (:init! app))
 (def reload! (:reload! app))

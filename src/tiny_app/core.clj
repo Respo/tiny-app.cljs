@@ -36,5 +36,5 @@
         (render-app!# respo.core/render!)
         (println "Code updated."))
 
-      {:start-app! start-app!#,
+      {:init! start-app!#,
        :reload! reload!#})))
