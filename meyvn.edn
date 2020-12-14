@@ -1,9 +1,0 @@
-
-{:pom {:group-id "respo",
-       :artifact-id "tiny-app",
-       :version "0.3.0",
-       :name "Respo tiny app template"}
- :packaging {:jar {:enabled true
-                   :remote-repository {:id "clojars"
-                                       :url "https://clojars.org/repo"}}}
- :scm {:enabled true}}

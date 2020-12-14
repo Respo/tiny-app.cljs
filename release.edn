@@ -1,0 +1,6 @@
+{:version "0.3.0",
+ :group-id "respo",
+ :artifact-id "tiny-app",
+ :skip-tag true,
+ :description "Respo tiny app template",
+ :scm-url "https://github.com/Respo/tiny-app"}

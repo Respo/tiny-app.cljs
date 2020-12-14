@@ -3,3 +3,7 @@
 /target
 .shadow-cljs
 .nrepl-port
+
+.cpcache/
+trace.edn
+pom.xml
